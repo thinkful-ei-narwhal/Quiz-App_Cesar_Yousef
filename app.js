@@ -29,13 +29,13 @@ const store = {
   quizStarted: false,
   questionNumber: 0,
   score: 0
-};
-  
+}
+
 /**
-   * 
+   *
    * Technical requirements:
-   * 
-   * Your app should include a render() function, that regenerates the view each time the store is updated. 
+   *
+   * Your app should include a render() function, that regenerates the view each time the store is updated.
    * See your course material, consult your instructor, and reference the slides for more details.
    *
    * NO additional HTML elements should be added to the index.html file.
@@ -43,19 +43,19 @@ const store = {
    * You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
    *
    * SEE BELOW FOR THE CATEGORIES OF THE TYPES OF FUNCTIONS YOU WILL BE CREATING 👇
-   * 
+   *
    */
-/********** TEMPLATE GENERATION FUNCTIONS **********/
+/** ******** TEMPLATE GENERATION FUNCTIONS **********/
 // These functions return HTML templates
 
-//fuction that choices which template
-//functions that writes the template---startpg, questionpg, resultspg, finalpg
-//function that render the pg
+// fuction that choices which template
+// functions that writes the template---startpg, questionpg, resultspg, finalpg
+// function that render the pg
 
-function renderTemplate(){
-  console.log('`renderTemplate` ran');
-  const renderTemplateString = startQuizElement ();
-  $('main').html(renderTemplateString);
+function renderTemplate () {
+  console.log('`renderTemplate` ran')
+  const renderTemplateString = renderQuestionTemplate()
+  $('main').html(renderTemplateString)
 }
 
 function startQuizElement () {
@@ -66,20 +66,39 @@ function startQuizElement () {
   <section class="button-section">
     <button class="js-button">
     <span class="button-label">yes</span>
-    </section>`;
+    </section>`
 }
 
-function handleQuizapp(){
-  renderTemplate();
-  startQuizElement ();
+function renderQuestionTemplate () {
+  return `<section class="question">
+  <form class="questionForm">
+    <fieldset class="radio">
+    <input type ="radio" value= "question1">
+    <label for= "question1">Q1</label>
+    <input type ="radio" value= "question2">
+    <label for= "question1">Q2</label>
+    <input type ="radio" value= "question3">
+    <label for= "question1">Q3</label>
+    <input type ="radio" value= "question4">
+    <label for= "question1">Q4</label>
+  
+    <button type= "submit">Submit</button>
+  </form>
+  </section>
+  `
 }
-  
-/********** RENDER FUNCTION(S) **********/
-  
+
+/** ******** RENDER FUNCTION(S) **********/
+
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
-  
-/********** EVENT HANDLER FUNCTIONS **********/
-  
+
+/** ******** EVENT HANDLER FUNCTIONS **********/
+
 // These functions handle events (submit, click, etc)
 
-$(handleQuizapp);
+function handleQuizapp () {
+  renderTemplate()
+  startQuizElement()
+}
+
+$(handleQuizapp)
