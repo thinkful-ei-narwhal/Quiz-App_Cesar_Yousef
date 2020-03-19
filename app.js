@@ -71,17 +71,21 @@ function startQuizElement () {
 
 function renderQuestionTemplate () {
   return `<section class="question">
+  <h2>Main Question</h2>
   <form class="questionForm">
     <fieldset class="radio">
-    <input type ="radio" value= "question1">
+    <input type ="radio" value= "question1" name="answer" required>
     <label for= "question1">Q1</label>
-    <input type ="radio" value= "question2">
+  <br>
+    <input type ="radio" value= "question2" name="answer" required>
     <label for= "question1">Q2</label>
-    <input type ="radio" value= "question3">
+  <br>
+    <input type ="radio" value= "question3" name="answer" required>
     <label for= "question1">Q3</label>
-    <input type ="radio" value= "question4">
+  <br>
+    <input type ="radio" value= "question4" name="answer" required>
     <label for= "question1">Q4</label>
-  
+  <br>
     <button type= "submit">Submit</button>
   </form>
   </section>
@@ -98,7 +102,7 @@ function renderQuestionTemplate () {
 
 function handleQuizapp () {
   renderTemplate()
-  startQuizElement()
+  
 }
 
 $(handleQuizapp)
