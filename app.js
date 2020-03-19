@@ -29,7 +29,7 @@ const store = {
   quizStarted: false,
   questionNumber: 0,
   score: 0
-}
+};
 
 /**
    *
@@ -53,12 +53,12 @@ const store = {
 // function that render the pg
 
 function renderTemplate () {
-  console.log('`renderTemplate` ran')
-  const renderTemplateString = renderQuestionTemplate()
-  $('main').html(renderTemplateString)
+  console.log('`renderTemplate` ran');
+  const renderTemplateString = wrongResultsTemplate();
+  $('main').html(renderTemplateString);
 }
 
-function startQuizElement () {
+function startQuizTemplate() {
   return `
   <section class="quiz-explanation">
     <p class="quiz-description">anything can go here this is just a example</p>
@@ -66,10 +66,10 @@ function startQuizElement () {
   <section class="button-section">
     <button class="js-button">
     <span class="button-label">yes</span>
-    </section>`
+    </section>`;
 }
 
-function renderQuestionTemplate () {
+function questionTemplate () {
   return `<section class="question">
   <h2>Main Question</h2>
   <form class="questionForm">
@@ -89,7 +89,40 @@ function renderQuestionTemplate () {
     <button type= "submit">Submit</button>
   </form>
   </section>
-  `
+  `;
+}
+
+function correctResultsTemplate() {
+  return `
+  <section class="quiz-results">
+    <h2 class="result">Your anwser is correct</h2>
+  <section>
+  <section class="result-details">
+  <p>Score: # out 5</p>
+  <p>Right: #</p>
+  <p>Wrong: #</p>
+  </section>
+  <section class="result-button">
+    <button class="js-button">
+    <span class="button-label">Next</span>
+  </section>`;
+}
+
+function wrongResultsTemplate() {
+  return `
+  <section class="quiz-results">
+    <h2 class="result">Your anwser is Wrong</h2>
+  <section>
+  <section class="result-details">
+  <p>Right answear: this is the right answear<p>
+  <p>Score: # out 5</p>
+  <p>Right: #</p>
+  <p>Wrong: #</p>
+  </section>
+  <section class="result-button">
+    <button class="js-button">
+    <span class="button-label">Next</span>
+  </section>`;
 }
 
 /** ******** RENDER FUNCTION(S) **********/
@@ -101,8 +134,8 @@ function renderQuestionTemplate () {
 // These functions handle events (submit, click, etc)
 
 function handleQuizapp () {
-  renderTemplate()
+  renderTemplate();
   
 }
 
-$(handleQuizapp)
+$(handleQuizapp);
