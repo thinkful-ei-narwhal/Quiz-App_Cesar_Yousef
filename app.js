@@ -54,7 +54,7 @@ const store = {
 
 function renderTemplate () {
   console.log('`renderTemplate` ran');
-  const renderTemplateString = wrongResultsTemplate();
+  const renderTemplateString = endQuizTemplate();
   $('main').html(renderTemplateString);
 }
 
@@ -122,6 +122,21 @@ function wrongResultsTemplate() {
   <section class="result-button">
     <button class="js-button">
     <span class="button-label">Next</span>
+  </section>`;
+}
+
+function endQuizTemplate() {
+  return ` <section class="quiz-results">
+  <h2> You got a #%  </h2>
+  <section>
+  <section class="result-details">
+  <p>Score: # out 5</p>
+  <p>Right: #</p>
+  <p>Wrong: #</p>
+  </section>
+  <section class="result-button">
+    <button class="js-button">
+    <span class="button-label">Try Again</span>
   </section>`;
 }
 
