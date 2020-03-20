@@ -29,6 +29,7 @@ const STORE = {
   quizStarted: false,
   questionNumber: 0,
   score: 0,
+  wrong: 0,
   submitAnswer:false
 };
 
@@ -115,7 +116,7 @@ function correctResultsTemplate () {
   <section class="result-details">
   <p>Score: ${STORE.score} out ${STORE.questions.length}</p>
   <p>Correct: ${STORE.score}</p>
-  <p>Incorrect: ${STORE.score - STORE.questionNumber}</p>
+  <p>Incorrect: ${STORE.wrong}</p>
   </section>
   <section class="result-button">
     <button id="nextQuestion-button" class="js-button">
@@ -203,7 +204,8 @@ function checkQuentionResults() {
       console.log(STORE.score);
     }
     else {
-      // console.log('false');
+      STORE.wrong++
+      console.log('false');
     }
     STORE.submitAnswer=true;
     renderTemplate ();
