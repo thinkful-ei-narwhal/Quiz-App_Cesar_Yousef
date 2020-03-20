@@ -185,8 +185,13 @@ function checkQuentionResults() {
     //console.log(STORE.questions[STORE.questionNumber].answers[1]);
     //at the end add STORE.questionNumber += 1
     let userAnswear=$('input:checked').val();
-    console.log(userAnswear);
-
+    // console.log(userAnswear);
+    let correctAnswer = STORE.questions[STORE.questionNumber].correctAnswer
+    console.log(correctAnswer);
+    if (userAnswear === correctAnswer) {
+      console.log('true')
+    }
+    else (console.log('false'))
     
     
 
