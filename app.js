@@ -113,9 +113,9 @@ function correctResultsTemplate () {
     <h2 class="result">Your anwser is correct</h2>
   <section>
   <section class="result-details">
-  <p>Score: # out 5</p>
-  <p>Right: #</p>
-  <p>Wrong: #</p>
+  <p>Score: ${STORE.score} out ${STORE.questions.length}</p>
+  <p>Correct: ${STORE.score}</p>
+  <p>Incorrect: ${STORE.score - STORE.questionNumber}</p>
   </section>
   <section class="result-button">
     <button id="nextQuestion-button" class="js-button">
@@ -129,10 +129,10 @@ function wrongResultsTemplate () {
     <h2 class="result">Your anwser is Wrong</h2>
   <section>
   <section class="result-details">
-  <p>Right answear: this is the right answear<p>
+  <p>Correct answer: this is the right answear<p>
   <p>Score: # out 5</p>
-  <p>Right: #</p>
-  <p>Wrong: #</p>
+  <p>Correct: #</p>
+  <p>Incorrect: #</p>
   </section>
   <section class="result-button">
     <button id="nextQuestion-button" class="js-button">
@@ -146,8 +146,8 @@ function endQuizTemplate () {
   <section>
   <section class="result-details">
   <p>Score: # out 5</p>
-  <p>Right: #</p>
-  <p>Wrong: #</p>
+  <p>Correct: #</p>
+  <p>Incorrect: #</p>
   </section>
   <section class="result-button">
     <button id="restartQuiz-button" class="js-button">
@@ -171,7 +171,7 @@ function nextViewTrigger() {
       renderTemplate ();
       break;
     case 'submitQuestion-button':
-      STORE.questionNumber += 1;
+      // STORE.questionNumber += 1;
       //STORE.submitAnswer = true;
       //checkQuentionResults();
       console.log(STORE.questions[1]);
@@ -199,10 +199,11 @@ function checkQuentionResults() {
     let correctAnswer = STORE.questions[STORE.questionNumber].correctAnswer;
     console.log(correctAnswer);
     if (userAnswear === correctAnswer) {
-      console.log('true');
+      STORE.score++
+      console.log(STORE.score);
     }
     else {
-      console.log('false');
+      // console.log('false');
     }
     STORE.submitAnswer=true;
     renderTemplate ();
