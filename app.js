@@ -56,13 +56,10 @@ const STORE = {
 
 function renderTemplate () {
   console.log('`renderTemplate` ran');
-  // choiceTemplate ();
-  // const renderTemplateString = endQuizTemplate();
   $('main').html(choiceTemplate());
 }
 
 function choiceTemplate () {
-  console.log('`choiceTemplate` ran');
   if (STORE.quizStarted === false) {
     return startQuizTemplate();
   }
@@ -159,29 +156,22 @@ function endQuizTemplate () {
 /** ******** RENDER FUNCTION(S) **********/
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
-
 function nextViewTrigger() {
-  console.log('nextView ran');
   $('.js-button').on('click', function (event){
     event.preventDefault();
-    console.log(`${event.currentTarget.id}`);
     switch(event.currentTarget.id) {
     case 'start-button':
       STORE.quizStarted = true;
-      console.log(STORE.questionNumber);
+      console.log(STORE.submitAnswer );
       renderTemplate ();
       break;
     case 'submitQuestion-button':
-      // STORE.questionNumber += 1;
-      //STORE.submitAnswer = true;
-      //checkQuentionResults();
-      console.log(STORE.questions[1]);
+      console.log(STORE.submitAnswer );
       renderTemplate ();
       break;
     case 'nextQuestion-button':
-      //STORE.submitAnswer = false;
-      //checkQuentionResults();
-      console.log(STORE.questions[1]);
+      STORE.submitAnswer = false;
+      console.log(STORE.submitAnswer );
       renderTemplate ();
       break;
     }
@@ -189,26 +179,20 @@ function nextViewTrigger() {
   });
 }
 
+
 function checkQuentionResults() {
   $('main').on('submit', 'form',function(event){
     event.preventDefault();
-    console.log(STORE.questions[STORE.questionNumber].question);
-    //console.log(STORE.questions[STORE.questionNumber].answers[1]);
-    //at the end add STORE.questionNumber += 1
     let userAnswear=$('input:checked').val();
-    // console.log(userAnswear);
     let correctAnswer = STORE.questions[STORE.questionNumber].correctAnswer;
-    console.log(correctAnswer);
     if (userAnswear === correctAnswer) {
-      STORE.score++
-      console.log(STORE.score);
+      STORE.score++;
     }
     else {
-      STORE.wrong++
-      console.log('false');
+      STORE.wrong++;
     }
     STORE.submitAnswer=true;
-    renderTemplate ();
+    renderTemplate();
   });
 }
 
