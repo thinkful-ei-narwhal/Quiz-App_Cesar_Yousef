@@ -72,12 +72,13 @@ function choiceTemplate () {
 
 function nextViewTrigger() {
   console.log('nextView ran');
-  $('.js-button').on('click', function (){
-    console.log(`${this.id}`);
-    switch(this.id) {
-      case "start-button":
-      // STORE.questionNumber = 1;
-      console.log(STORE.questionNumber)
+  $('.js-button').on('click', function (event){
+    console.log(`${event.currentTarget.id}`);
+    switch(event.currentTarget.id) {
+    case 'start-button':
+      STORE.questionNumber = 1;
+      console.log(STORE.questionNumber);
+      renderTemplate ();
       break;
     }
   });
