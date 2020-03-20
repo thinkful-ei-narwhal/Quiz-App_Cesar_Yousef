@@ -157,19 +157,24 @@ function endQuizTemplate () {
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
 function nextViewTrigger() {
-  $('.js-button').on('click', function (event){
+  console.log("nextViewTrigger ran");
+  $('main').on('click','.js-button', function (event){
     event.preventDefault();
     switch(event.currentTarget.id) {
     case 'start-button':
       STORE.quizStarted = true;
       console.log(STORE.submitAnswer );
+      console.log("start-button ran");
       renderTemplate ();
       break;
     case 'submitQuestion-button':
+      console.log("submitQuestion-button ran");
+      STORE.submitAnswer=true;
       console.log(STORE.submitAnswer );
       renderTemplate ();
       break;
     case 'nextQuestion-button':
+      console.log("nextQuestion-button");
       STORE.submitAnswer = false;
       console.log(STORE.submitAnswer );
       renderTemplate ();
@@ -182,6 +187,7 @@ function nextViewTrigger() {
 
 function checkQuentionResults() {
   $('main').on('submit', 'form',function(event){
+    console.log('checkQuentionResults()');
     event.preventDefault();
     let userAnswear=$('input:checked').val();
     let correctAnswer = STORE.questions[STORE.questionNumber].correctAnswer;
@@ -208,7 +214,6 @@ function checkQuentionResults() {
 function handleQuizapp () {
   renderTemplate();
   nextViewTrigger();
-  checkQuentionResults();
 }
 
 $(handleQuizapp);
