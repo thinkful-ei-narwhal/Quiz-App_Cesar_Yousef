@@ -64,27 +64,11 @@ function choiceTemplate () {
   if (STORE.questionNumber === 0) {
     return startQuizTemplate();
   }
-  else if (STORE.questionNumber === 1) {
+  else if (STORE.questionNumber >0 && STORE.questionNumber <=STORE.questions.length) {
     return questionTemplate ();
   }
   
 }
-
-function nextViewTrigger() {
-  console.log('nextView ran');
-  $('.js-button').on('click', function (event){
-    console.log(`${event.currentTarget.id}`);
-    switch(event.currentTarget.id) {
-    case 'start-button':
-      STORE.questionNumber = 1;
-      console.log(STORE.questionNumber);
-      renderTemplate ();
-      break;
-    }
-  });
-}
-
-
 
 function startQuizTemplate () {
   return `
@@ -172,6 +156,35 @@ function endQuizTemplate () {
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
 
+function nextViewTrigger() {
+  console.log('nextView ran');
+  $('.js-button').on('click', function (event){
+    event.preventDefault();
+    console.log(`${event.currentTarget.id}`);
+    switch(event.currentTarget.id) {
+    case 'start-button':
+      STORE.questionNumber = 1;
+      console.log(STORE.questionNumber);
+      renderTemplate ();
+      break;
+    case 'submitQuestion-button':
+      STORE.questionNumber += 1;
+      //checkQuentionResults();
+      console.log(STORE.questions[1]);
+      renderTemplate ();
+      break;
+    }
+    
+  });
+}
+
+function checkQuentionResults() {
+  $('main').on('submit', 'form',function(event){
+    event.preventDefault();
+    console.log(STORE.questions[STORE.questionNumber].question);
+  });
+}
+
 /** ******** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
@@ -179,6 +192,7 @@ function endQuizTemplate () {
 function handleQuizapp () {
   renderTemplate();
   nextViewTrigger();
+  checkQuentionResults();
 }
 
 $(handleQuizapp);
