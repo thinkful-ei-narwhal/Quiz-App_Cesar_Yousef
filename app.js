@@ -61,16 +61,25 @@ function renderTemplate () {
 
 function choiceTemplate () {
   console.log('`choiceTemplate` ran');
-  if (STORE.quizStarted === false) {
+  if (STORE.questionNumber === 0) {
     return startQuizTemplate();
   }
+  else if (STORE.questionNumber === 1) {
+    return questionTemplate ();
+  }
+  
 }
 
 function nextViewTrigger() {
   console.log('nextView ran');
   $('.js-button').on('click', function (){
-    // switch(button.id)
-    console.log('nextView ran');
+    console.log(`${this.id}`);
+    switch(this.id) {
+      case "start-button":
+      // STORE.questionNumber = 1;
+      console.log(STORE.questionNumber)
+      break;
+    }
   });
 }
 
