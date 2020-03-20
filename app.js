@@ -61,10 +61,10 @@ function renderTemplate () {
 
 function choiceTemplate () {
   console.log('`choiceTemplate` ran');
-  if (STORE.questionNumber === 0) {
+  if (STORE.quizStarted === false) {
     return startQuizTemplate();
   }
-  else if (STORE.questionNumber >0 && STORE.questionNumber <=STORE.questions.length) {
+  else if (STORE.questionNumber <=STORE.questions.length) {
     return questionTemplate ();
   }
   
@@ -83,7 +83,7 @@ function startQuizTemplate () {
 
 function questionTemplate () {
   return `<section class="question">
-  <h2>Main Question</h2>
+  <h2> ${STORE.questions[STORE.questionNumber].question}</h2>
   <form class="questionForm">
     <fieldset class="radio">
     <input type ="radio" value= "question1" name="answer" required>
@@ -163,7 +163,7 @@ function nextViewTrigger() {
     console.log(`${event.currentTarget.id}`);
     switch(event.currentTarget.id) {
     case 'start-button':
-      STORE.questionNumber = 1;
+      STORE.quizStarted = true;
       console.log(STORE.questionNumber);
       renderTemplate ();
       break;
@@ -182,8 +182,14 @@ function checkQuentionResults() {
   $('main').on('submit', 'form',function(event){
     event.preventDefault();
     console.log(STORE.questions[STORE.questionNumber].question);
+    //at the end add STORE.questionNumber += 1
+    
+
   });
 }
+
+// STORE.questions[STORE.questionNumber].question == curent quention
+
 
 /** ******** EVENT HANDLER FUNCTIONS **********/
 
