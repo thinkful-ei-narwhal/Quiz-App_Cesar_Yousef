@@ -28,7 +28,8 @@ const STORE = {
   ],
   quizStarted: false,
   questionNumber: 0,
-  score: 0
+  score: 0,
+  submitAnswer:false
 };
 
 /**
@@ -64,8 +65,10 @@ function choiceTemplate () {
   if (STORE.quizStarted === false) {
     return startQuizTemplate();
   }
-  else if (STORE.questionNumber <=STORE.questions.length) {
+  else if (STORE.questionNumber <=STORE.questions.length && STORE.submitAnswer===false) {
     return questionTemplate ();
+  }else if (STORE.questionNumber <=STORE.questions.length && STORE.submitAnswer===true) {
+    return endQuizTemplate ();
   }
   
 }
@@ -98,7 +101,7 @@ function questionTemplate () {
     <input type ="radio" value= "${STORE.questions[STORE.questionNumber].answers[3]}" name="answer" required>
     <label for= "question1">${STORE.questions[STORE.questionNumber].answers[3]}</label>
   <br>
-    <button type= "submit" id="submitQuestion-button">Submit</button>
+    <button type= "submit" id="submitQuestion-button" class="js-button">Submit</button>
   </form>
   </section>
   `;
@@ -169,6 +172,13 @@ function nextViewTrigger() {
       break;
     case 'submitQuestion-button':
       STORE.questionNumber += 1;
+      STORE.submitAsnwear = true;
+      //checkQuentionResults();
+      console.log(STORE.questions[1]);
+      renderTemplate ();
+      break;
+    case 'nextQuestion-button':
+      STORE.submitAnswer = false;
       //checkQuentionResults();
       console.log(STORE.questions[1]);
       renderTemplate ();
@@ -186,12 +196,12 @@ function checkQuentionResults() {
     //at the end add STORE.questionNumber += 1
     let userAnswear=$('input:checked').val();
     // console.log(userAnswear);
-    let correctAnswer = STORE.questions[STORE.questionNumber].correctAnswer
+    let correctAnswer = STORE.questions[STORE.questionNumber].correctAnswer;
     console.log(correctAnswer);
     if (userAnswear === correctAnswer) {
-      console.log('true')
+      console.log('true');
     }
-    else (console.log('false'))
+    else (console.log('false'));
     
     
 
