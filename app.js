@@ -68,7 +68,7 @@ function choiceTemplate () {
   else if (STORE.questionNumber <=STORE.questions.length && STORE.submitAnswer===false) {
     return questionTemplate ();
   }else if (STORE.questionNumber <=STORE.questions.length && STORE.submitAnswer===true) {
-    return endQuizTemplate ();
+    return correctResultsTemplate ();
   }
   
 }
@@ -172,13 +172,13 @@ function nextViewTrigger() {
       break;
     case 'submitQuestion-button':
       STORE.questionNumber += 1;
-      STORE.submitAsnwear = true;
+      //STORE.submitAnswer = true;
       //checkQuentionResults();
       console.log(STORE.questions[1]);
       renderTemplate ();
       break;
     case 'nextQuestion-button':
-      STORE.submitAnswer = false;
+      //STORE.submitAnswer = false;
       //checkQuentionResults();
       console.log(STORE.questions[1]);
       renderTemplate ();
@@ -201,10 +201,11 @@ function checkQuentionResults() {
     if (userAnswear === correctAnswer) {
       console.log('true');
     }
-    else (console.log('false'));
-    
-    
-
+    else {
+      console.log('false');
+    }
+    STORE.submitAnswer=true;
+    renderTemplate ();
   });
 }
 
