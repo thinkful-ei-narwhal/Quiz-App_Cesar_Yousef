@@ -29,7 +29,7 @@ const STORE = {
   quizStarted: false,
   questionNumber: 0,
   score: 0
-}
+};
 
 /**
    *
@@ -53,25 +53,28 @@ const STORE = {
 // function that render the pg
 
 function renderTemplate () {
-  console.log('`renderTemplate` ran')
+  console.log('`renderTemplate` ran');
   // choiceTemplate ();
   // const renderTemplateString = endQuizTemplate();
-  $('main').html(choiceTemplate())
+  $('main').html(choiceTemplate());
 }
 
 function choiceTemplate () {
-  console.log('`choiceTemplate` ran')
+  console.log('`choiceTemplate` ran');
   if (STORE.quizStarted === false) {
-    return startQuizTemplate()
+    return startQuizTemplate();
   }
 }
 
-
 function nextViewTrigger() {
-  $('js-button').on('click', function (e){
+  console.log('nextView ran');
+  $('.js-button').on('click', function (){
     // switch(button.id)
-    console.log(`${button.id}`)
-})
+    console.log('nextView ran');
+  });
+}
+
+
 
 function startQuizTemplate () {
   return `
@@ -81,7 +84,7 @@ function startQuizTemplate () {
   <section class="button-section">
     <button id="start-button" class="js-button">
     <span class="button-label">yes</span>
-    </section>`
+    </section>`;
 }
 
 function questionTemplate () {
@@ -104,7 +107,7 @@ function questionTemplate () {
     <button type= "submit" id="submitQuestion-button">Submit</button>
   </form>
   </section>
-  `
+  `;
 }
 
 function correctResultsTemplate () {
@@ -120,7 +123,7 @@ function correctResultsTemplate () {
   <section class="result-button">
     <button id="nextQuestion-button" class="js-button">
     <span class="button-label">Next</span>
-  </section>`
+  </section>`;
 }
 
 function wrongResultsTemplate () {
@@ -137,7 +140,7 @@ function wrongResultsTemplate () {
   <section class="result-button">
     <button id="nextQuestion-button" class="js-button">
     <span class="button-label">Next</span>
-  </section>`
+  </section>`;
 }
 
 function endQuizTemplate () {
@@ -152,7 +155,7 @@ function endQuizTemplate () {
   <section class="result-button">
     <button id="restartQuiz-button" class="js-button">
     <span class="button-label">Try Again</span>
-  </section>`
+  </section>`;
 }
 
 /** ******** RENDER FUNCTION(S) **********/
@@ -164,8 +167,8 @@ function endQuizTemplate () {
 // These functions handle events (submit, click, etc)
 
 function handleQuizapp () {
-  renderTemplate()
-  nextViewTrigger()
+  renderTemplate();
+  nextViewTrigger();
 }
 
-$(handleQuizapp)
+$(handleQuizapp);
