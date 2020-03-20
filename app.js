@@ -86,16 +86,16 @@ function questionTemplate () {
   <h2> ${STORE.questions[STORE.questionNumber].question}</h2>
   <form class="questionForm">
     <fieldset class="radio">
-    <input type ="radio" value= "question1" name="answer" required>
+    <input type ="radio" value= "${STORE.questions[STORE.questionNumber].answers[0]}" name="answer" required>
     <label for= "question1">${STORE.questions[STORE.questionNumber].answers[0]}</label>
   <br>
-    <input type ="radio" value= "question2" name="answer" required>
+    <input type ="radio" value= "${STORE.questions[STORE.questionNumber].answers[1]}" name="answer" required>
     <label for= "question1">${STORE.questions[STORE.questionNumber].answers[1]}</label>
   <br>
-    <input type ="radio" value= "question3" name="answer" required>
+    <input type ="radio" value= "${STORE.questions[STORE.questionNumber].answers[2]}" name="answer" required>
     <label for= "question1">${STORE.questions[STORE.questionNumber].answers[2]}</label>
   <br>
-    <input type ="radio" value= "question4" name="answer" required>
+    <input type ="radio" value= "${STORE.questions[STORE.questionNumber].answers[3]}" name="answer" required>
     <label for= "question1">${STORE.questions[STORE.questionNumber].answers[3]}</label>
   <br>
     <button type= "submit" id="submitQuestion-button">Submit</button>
@@ -182,8 +182,11 @@ function checkQuentionResults() {
   $('main').on('submit', 'form',function(event){
     event.preventDefault();
     console.log(STORE.questions[STORE.questionNumber].question);
-    console.log(STORE.questions[STORE.questionNumber].answers[1]);
+    //console.log(STORE.questions[STORE.questionNumber].answers[1]);
     //at the end add STORE.questionNumber += 1
+    let userAnswear=$('input:checked').val();
+    console.log(userAnswear);
+
     
     
 
@@ -192,6 +195,7 @@ function checkQuentionResults() {
 
 // STORE.questions[STORE.questionNumber].question == curent quention
 ///STORE.questions[STORE.questionNumber].answers[1]== answear #1
+//$('input:checked').val();= user input
 
 
 /** ******** EVENT HANDLER FUNCTIONS **********/
