@@ -2,7 +2,7 @@
  * Example store structure
  */
 // eslint-disable-next-line strict
-const store = {
+const STORE = {
   // 5 or more questions are required
   questions: [
     {
@@ -54,9 +54,19 @@ const store = {
 
 function renderTemplate () {
   console.log('`renderTemplate` ran');
-  const renderTemplateString = endQuizTemplate();
-  $('main').html(renderTemplateString);
+  //choiceTemplate ();
+  //const renderTemplateString = endQuizTemplate();
+  $('main').html(choiceTemplate ());
 }
+
+function choiceTemplate () {
+  console.log('`choiceTemplate` ran');
+  if(STORE.quizStarted===false){
+    return startQuizTemplate();
+  }
+
+}
+
 
 function startQuizTemplate() {
   return `
