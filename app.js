@@ -87,16 +87,16 @@ function questionTemplate () {
   <form class="questionForm">
     <fieldset class="radio">
     <input type ="radio" value= "question1" name="answer" required>
-    <label for= "question1">Q1</label>
+    <label for= "question1">${STORE.questions[STORE.questionNumber].answers[0]}</label>
   <br>
     <input type ="radio" value= "question2" name="answer" required>
-    <label for= "question1">Q2</label>
+    <label for= "question1">${STORE.questions[STORE.questionNumber].answers[1]}</label>
   <br>
     <input type ="radio" value= "question3" name="answer" required>
-    <label for= "question1">Q3</label>
+    <label for= "question1">${STORE.questions[STORE.questionNumber].answers[2]}</label>
   <br>
     <input type ="radio" value= "question4" name="answer" required>
-    <label for= "question1">Q4</label>
+    <label for= "question1">${STORE.questions[STORE.questionNumber].answers[3]}</label>
   <br>
     <button type= "submit" id="submitQuestion-button">Submit</button>
   </form>
@@ -182,13 +182,16 @@ function checkQuentionResults() {
   $('main').on('submit', 'form',function(event){
     event.preventDefault();
     console.log(STORE.questions[STORE.questionNumber].question);
+    console.log(STORE.questions[STORE.questionNumber].answers[1]);
     //at the end add STORE.questionNumber += 1
+    
     
 
   });
 }
 
 // STORE.questions[STORE.questionNumber].question == curent quention
+///STORE.questions[STORE.questionNumber].answers[1]== answear #1
 
 
 /** ******** EVENT HANDLER FUNCTIONS **********/
