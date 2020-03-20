@@ -29,7 +29,7 @@ const STORE = {
   quizStarted: false,
   questionNumber: 0,
   score: 0
-};
+}
 
 /**
    *
@@ -53,30 +53,35 @@ const STORE = {
 // function that render the pg
 
 function renderTemplate () {
-  console.log('`renderTemplate` ran');
-  //choiceTemplate ();
-  //const renderTemplateString = endQuizTemplate();
-  $('main').html(choiceTemplate ());
+  console.log('`renderTemplate` ran')
+  // choiceTemplate ();
+  // const renderTemplateString = endQuizTemplate();
+  $('main').html(choiceTemplate())
 }
 
 function choiceTemplate () {
-  console.log('`choiceTemplate` ran');
-  if(STORE.quizStarted===false){
-    return startQuizTemplate();
+  console.log('`choiceTemplate` ran')
+  if (STORE.quizStarted === false) {
+    return startQuizTemplate()
   }
-
 }
 
 
-function startQuizTemplate() {
+function nextViewTrigger() {
+  $('js-button').on('click', function (e){
+    // switch(button.id)
+    console.log(`${button.id}`)
+})
+
+function startQuizTemplate () {
   return `
   <section class="quiz-explanation">
     <p class="quiz-description">anything can go here this is just a example</p>
   <section>
   <section class="button-section">
-    <button class="js-button">
+    <button id="start-button" class="js-button">
     <span class="button-label">yes</span>
-    </section>`;
+    </section>`
 }
 
 function questionTemplate () {
@@ -96,13 +101,13 @@ function questionTemplate () {
     <input type ="radio" value= "question4" name="answer" required>
     <label for= "question1">Q4</label>
   <br>
-    <button type= "submit">Submit</button>
+    <button type= "submit" id="submitQuestion-button">Submit</button>
   </form>
   </section>
-  `;
+  `
 }
 
-function correctResultsTemplate() {
+function correctResultsTemplate () {
   return `
   <section class="quiz-results">
     <h2 class="result">Your anwser is correct</h2>
@@ -113,12 +118,12 @@ function correctResultsTemplate() {
   <p>Wrong: #</p>
   </section>
   <section class="result-button">
-    <button class="js-button">
+    <button id="nextQuestion-button" class="js-button">
     <span class="button-label">Next</span>
-  </section>`;
+  </section>`
 }
 
-function wrongResultsTemplate() {
+function wrongResultsTemplate () {
   return `
   <section class="quiz-results">
     <h2 class="result">Your anwser is Wrong</h2>
@@ -130,12 +135,12 @@ function wrongResultsTemplate() {
   <p>Wrong: #</p>
   </section>
   <section class="result-button">
-    <button class="js-button">
+    <button id="nextQuestion-button" class="js-button">
     <span class="button-label">Next</span>
-  </section>`;
+  </section>`
 }
 
-function endQuizTemplate() {
+function endQuizTemplate () {
   return ` <section class="quiz-results">
   <h2> You got a #%  </h2>
   <section>
@@ -145,9 +150,9 @@ function endQuizTemplate() {
   <p>Wrong: #</p>
   </section>
   <section class="result-button">
-    <button class="js-button">
+    <button id="restartQuiz-button" class="js-button">
     <span class="button-label">Try Again</span>
-  </section>`;
+  </section>`
 }
 
 /** ******** RENDER FUNCTION(S) **********/
@@ -159,8 +164,8 @@ function endQuizTemplate() {
 // These functions handle events (submit, click, etc)
 
 function handleQuizapp () {
-  renderTemplate();
-  
+  renderTemplate()
+  nextViewTrigger()
 }
 
-$(handleQuizapp);
+$(handleQuizapp)
