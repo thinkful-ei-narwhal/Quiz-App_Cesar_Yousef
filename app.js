@@ -86,17 +86,17 @@ function startQuizTemplate () {
   <section>
   <section class="button-section">
     <button class="start-button purple-button" >
-    <span class="button-label">yes</span>
+    <span class="button-label">START</span>
     </section>`;
 }
 
 function questionTemplate () {
   return `<section class="question">
-  <h4> ${STORE.questions[STORE.questionNumber].question}</h4>
+  <h2> ${STORE.questions[STORE.questionNumber].question}</h2>
   <form class="questionForm">
     <fieldset class="radio">
     <input type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[0]}" name="answer" required>
-    <label for= "question1">${STORE.questions[STORE.questionNumber].answers[0]}</label>
+    <label for= "question1" >${STORE.questions[STORE.questionNumber].answers[0]}</label>
   <br>
     <input type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[1]}" name="answer" required>
     <label for= "question1">${STORE.questions[STORE.questionNumber].answers[1]}</label>
