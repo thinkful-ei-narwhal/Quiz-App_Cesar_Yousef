@@ -85,7 +85,7 @@ function startQuizTemplate () {
     <p class="quiz-description">anything can go here this is just a example</p>
   <section>
   <section class="button-section">
-    <button class="start-button">
+    <button class="start-button purple-button" >
     <span class="button-label">yes</span>
     </section>`;
 }
@@ -125,7 +125,7 @@ function correctResultsTemplate () {
   <p>Incorrect: ${STORE.wrong}</p>
   </section>
   <section class="result-button">
-    <button class="next-button">
+    <button class="next-button purple-button">
     <span class="button-label">Next</span>
   </section>`;
 }
@@ -140,7 +140,7 @@ function endQuizTemplate () {
   <p>Incorrect: ${STORE.wrong}</p>
   </section>
   <section class="result-button">
-    <button class="restart-button">
+    <button class="restart-button purple-button">
     <span class="button-label">Try Again</span>
   </section>`;
 }

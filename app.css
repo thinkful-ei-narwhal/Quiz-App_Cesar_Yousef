@@ -74,3 +74,9 @@ form {
   padding: 0.8em;
   border-radius: 6px;
 }
+
+.purple-button {
+  background-color: rgb(179, 140, 255);
+  padding: 0.8em;
+  border-radius: 6px;
+}
