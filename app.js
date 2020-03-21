@@ -27,10 +27,11 @@ const STORE = {
     }
   ],
   quizStarted: false,
+  submitAnswer:false,
+  lastAnswear:false,
   questionNumber: 0,
   score: 0,
-  wrong: 0,
-  submitAnswer:false
+  wrong: 0
 };
 
 /**
@@ -53,27 +54,6 @@ const STORE = {
 // fuction that choices which template
 // functions that writes the template---startpg, questionpg, resultspg, finalpg
 // function that render the pg
-
-function renderTemplate () {
-  console.log('`renderTemplate` ran');
-  // choiceTemplate ();
-  // const renderTemplateString = endQuizTemplate();
-  $('main').html(choiceTemplate());
-}
-
-function choiceTemplate () {
-  console.log('`choiceTemplate` ran');
-  if (STORE.quizStarted === false) {
-    return startQuizTemplate();
-  }
-  else if (STORE.questionNumber <=STORE.questions.length && STORE.submitAnswer===false) {
-    return questionTemplate ();
-  }else if (STORE.questionNumber <=STORE.questions.length && STORE.submitAnswer===true) {
-    return correctResultsTemplate ();
-  }
-  
-}
-
 function startQuizTemplate () {
   return `
   <section class="quiz-explanation">
@@ -111,9 +91,10 @@ function questionTemplate () {
 function correctResultsTemplate () {
   return `
   <section class="quiz-results">
-    <h2 class="result">Your anwser is correct</h2>
+    <h2 class="result">Your anwser is ${(STORE.lastAnswear)?'Correct':'Wrong'}</h2>
   <section>
   <section class="result-details">
+  <p>Answer: ${STORE.questions[STORE.questionNumber].correctAnswer}<p>
   <p>Score: ${STORE.score} out ${STORE.questions.length}</p>
   <p>Correct: ${STORE.score}</p>
   <p>Incorrect: ${STORE.wrong}</p>
@@ -124,34 +105,17 @@ function correctResultsTemplate () {
   </section>`;
 }
 
-function wrongResultsTemplate () {
-  return `
-  <section class="quiz-results">
-    <h2 class="result">Your anwser is Wrong</h2>
-  <section>
-  <section class="result-details">
-  <p>Correct answer: this is the right answear<p>
-  <p>Score: # out 5</p>
-  <p>Correct: #</p>
-  <p>Incorrect: #</p>
-  </section>
-  <section class="result-button">
-    <button id="nextQuestion-button" class="js-button">
-    <span class="button-label">Next</span>
-  </section>`;
-}
-
 function endQuizTemplate () {
   return ` <section class="quiz-results">
-  <h2> You got a #%  </h2>
+  <h2> You got a ${(STORE.score/STORE.questions.length)*100}%</h2>
   <section>
   <section class="result-details">
-  <p>Score: # out 5</p>
-  <p>Correct: #</p>
-  <p>Incorrect: #</p>
+  <p>Score: ${STORE.score} out ${STORE.questions.length}</p>
+  <p>Correct: ${STORE.score}</p>
+  <p>Incorrect: ${STORE.wrong}</p>
   </section>
   <section class="result-button">
-    <button id="restartQuiz-button" class="js-button">
+    <button class="restart-button">
     <span class="button-label">Try Again</span>
   </section>`;
 }
@@ -159,56 +123,77 @@ function endQuizTemplate () {
 /** ******** RENDER FUNCTION(S) **********/
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
-
-function startGame() {
-  $('main').on('click','.start-button', function (event){
-    event.preventDefault();
-    STORE.quizStarted = true;
-    renderTemplate ();
-  });
+function handleRenderTemplate() {
+  $('main').html(choiceTemplate());
 }
 
-function enterAnswer() {
-  $('main').on('submit', 'form',function(event){
-    event.preventDefault();
-    //at the end add STORE.questionNumber += 1
-    let userAnswear=$('input:checked').val();
-    // console.log(userAnswear);
-    let correctAnswer = STORE.questions[STORE.questionNumber].correctAnswer;
-    if (userAnswear === correctAnswer) {
-      STORE.score++;
-    }
-    else {
-      STORE.wrong++;
-    }
-    STORE.submitAnswer=true;
-    renderTemplate ();
-  });
+function choiceTemplate () {
+  if (STORE.quizStarted === false) {
+    return startQuizTemplate();
+  }
+  else if (STORE.questionNumber <STORE.questions.length && STORE.submitAnswer===false) {
+    return questionTemplate ();
+  }else if (STORE.questionNumber <=STORE.questions.length && STORE.submitAnswer===true) {
+    return correctResultsTemplate ();
+  }else{
+    return endQuizTemplate ();
+  } 
 }
-
-function nextQuestion() {
-  $('main').on('click','.next-button', function (event){
-    event.preventDefault();
-    STORE.submitAnswer = false;
-    renderTemplate ();
-  });
-}
-
-// STORE.questions[STORE.questionNumber].question == curent quention
-///STORE.questions[STORE.questionNumber].answers[1]== answear #1
-//$('input:checked').val();= user input
-
-
 /** ******** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
+function handleStartGame() {
+  $('main').on('click','.start-button', function (event){
+    event.preventDefault();
+    STORE.quizStarted = true;
+    handleRenderTemplate();
+  });
+}
 
+function handleEnterAnswer(){
+  $('main').on('submit', 'form',function(event){
+    event.preventDefault();
+    let userAnswear=$('input:checked').val();
+    let correctAnswer = STORE.questions[STORE.questionNumber].correctAnswer;
+    if (userAnswear === correctAnswer) {
+      STORE.score++;
+      STORE.lastAnswear=true;
+    }else{
+      STORE.wrong++;
+      STORE.lastAnswear=false;
+    }
+    STORE.submitAnswer=true;
+    handleRenderTemplate();
+  });
+}
+
+function handleNextQuestion(){
+  $('main').on('click','.next-button', function (event){
+    event.preventDefault();
+    STORE.questionNumber += 1;
+    STORE.submitAnswer = false;
+    handleRenderTemplate();
+  });
+}
+
+function handleRestartGame(){
+  $('main').on('click','.restart-button', function (event){
+    event.preventDefault();
+    STORE.quizStarted= false;
+    STORE.questionNumber= 0;
+    STORE.score= 0;
+    STORE.wrong= 0;
+    STORE.submitAnswer=false;
+    STORE.lastAnswear=false,
+    handleRenderTemplate();
+  });
+}
 function handleQuizapp () {
-  renderTemplate();
-  startGame();
-  enterAnswer();
-  nextQuestion();
-  restartGame();
+  handleRenderTemplate();
+  handleStartGame();
+  handleEnterAnswer();
+  handleNextQuestion();
+  handleRestartGame();
 }
 
 $(handleQuizapp);
