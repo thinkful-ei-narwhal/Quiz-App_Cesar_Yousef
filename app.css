@@ -21,8 +21,6 @@ header {
   margin-bottom: 5em;
   margin: 30px;
 }
-main {
-}
 
 * {
   box-sizing: border-box;
@@ -46,7 +44,7 @@ hr {
   margin: $width auto;
 }
 
-.question {
+main {
   border-style: solid;
   border-radius: 2em;
   outline: none;
