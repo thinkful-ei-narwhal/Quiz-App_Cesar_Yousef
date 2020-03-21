@@ -82,7 +82,11 @@ const STORE = {
 function startQuizTemplate () {
   return `
   <section class="quiz-explanation">
-    <p class="quiz-description">anything can go here this is just a example</p>
+    <h2>WANT TO PLAY?</h2>
+    <p class="quiz-description">Test Your knowledge 
+    <br>In U.S History
+    <br>See How Much You Really Know
+    </p>
   <section>
   <section class="button-section">
     <button class="start-button purple-button" >
