@@ -107,7 +107,7 @@ function questionTemplate () {
     <input type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[3]}" name="answer" required>
     <label for= "question1">${STORE.questions[STORE.questionNumber].answers[3]}</label>
   <br>
-    <button type= "submit" id="submitQuestion-button" >Submit</button>
+    <button type= "submit" id="submitQuestion-button" class="purple-button" >Submit</button>
   </form>
   </section>
   `;
