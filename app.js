@@ -80,7 +80,7 @@ function startQuizTemplate () {
     <p class="quiz-description">anything can go here this is just a example</p>
   <section>
   <section class="button-section">
-    <button id="start-button" class="js-button">
+    <button class="start-button">
     <span class="button-label">yes</span>
     </section>`;
 }
@@ -102,7 +102,7 @@ function questionTemplate () {
     <input type ="radio" value= "${STORE.questions[STORE.questionNumber].answers[3]}" name="answer" required>
     <label for= "question1">${STORE.questions[STORE.questionNumber].answers[3]}</label>
   <br>
-    <button type= "submit" id="submitQuestion-button" class="js-button">Submit</button>
+    <button type= "submit" id="submitQuestion-button" >Submit</button>
   </form>
   </section>
   `;
@@ -119,7 +119,7 @@ function correctResultsTemplate () {
   <p>Incorrect: ${STORE.wrong}</p>
   </section>
   <section class="result-button">
-    <button id="nextQuestion-button" class="js-button">
+    <button class="next-button">
     <span class="button-label">Next</span>
   </section>`;
 }
@@ -160,54 +160,36 @@ function endQuizTemplate () {
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
 
-function nextViewTrigger() {
-  console.log('nextView ran');
-  $('.js-button').on('click', function (event){
+function startGame() {
+  $('main').on('click','.start-button', function (event){
     event.preventDefault();
-    console.log(`${event.currentTarget.id}`);
-    switch(event.currentTarget.id) {
-    case 'start-button':
-      STORE.quizStarted = true;
-      console.log(STORE.questionNumber);
-      renderTemplate ();
-      break;
-    case 'submitQuestion-button':
-      // STORE.questionNumber += 1;
-      //STORE.submitAnswer = true;
-      //checkQuentionResults();
-      console.log(STORE.questions[1]);
-      renderTemplate ();
-      break;
-    case 'nextQuestion-button':
-      //STORE.submitAnswer = false;
-      //checkQuentionResults();
-      console.log(STORE.questions[1]);
-      renderTemplate ();
-      break;
-    }
-    
+    STORE.quizStarted = true;
+    renderTemplate ();
   });
 }
 
-function checkQuentionResults() {
+function enterAnswer() {
   $('main').on('submit', 'form',function(event){
     event.preventDefault();
-    console.log(STORE.questions[STORE.questionNumber].question);
-    //console.log(STORE.questions[STORE.questionNumber].answers[1]);
     //at the end add STORE.questionNumber += 1
     let userAnswear=$('input:checked').val();
     // console.log(userAnswear);
     let correctAnswer = STORE.questions[STORE.questionNumber].correctAnswer;
-    console.log(correctAnswer);
     if (userAnswear === correctAnswer) {
-      STORE.score++
-      console.log(STORE.score);
+      STORE.score++;
     }
     else {
-      STORE.wrong++
-      console.log('false');
+      STORE.wrong++;
     }
     STORE.submitAnswer=true;
+    renderTemplate ();
+  });
+}
+
+function nextQuestion() {
+  $('main').on('click','.next-button', function (event){
+    event.preventDefault();
+    STORE.submitAnswer = false;
     renderTemplate ();
   });
 }
@@ -223,8 +205,10 @@ function checkQuentionResults() {
 
 function handleQuizapp () {
   renderTemplate();
-  nextViewTrigger();
-  checkQuentionResults();
+  startGame();
+  enterAnswer();
+  nextQuestion();
+  restartGame();
 }
 
 $(handleQuizapp);
