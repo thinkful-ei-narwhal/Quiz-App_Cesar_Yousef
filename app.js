@@ -3,7 +3,6 @@
  */
 // eslint-disable-next-line strict
 const STORE = {
-  // 5 or more questions are required
   questions: [
     {
       question: 'Who Was The First U.S President?',
@@ -153,7 +152,7 @@ function endQuizTemplate () {
 /** ******** RENDER FUNCTION(S) **********/
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
-function handleRenderTemplate() {
+function render(){
   $('main').html(choiceTemplate());
 }
 
@@ -176,7 +175,7 @@ function handleStartGame() {
   $('main').on('click','.start-button', function (event){
     event.preventDefault();
     STORE.quizStarted = true;
-    handleRenderTemplate();
+    render();
   });
 }
 
@@ -193,7 +192,7 @@ function handleEnterAnswer(){
       STORE.lastAnswear=false;
     }
     STORE.submitAnswer=true;
-    handleRenderTemplate();
+    render();
   });
 }
 
@@ -202,7 +201,7 @@ function handleNextQuestion(){
     event.preventDefault();
     STORE.questionNumber += 1;
     STORE.submitAnswer = false;
-    handleRenderTemplate();
+    render();
   });
 }
 
@@ -215,12 +214,12 @@ function handleRestartGame(){
     STORE.wrong= 0;
     STORE.submitAnswer=false;
     STORE.lastAnswear=false,
-    handleRenderTemplate();
+    render();
   });
 }
 
 function handleQuizapp () {
-  handleRenderTemplate();
+  render();
   handleStartGame();
   handleEnterAnswer();
   handleNextQuestion();
