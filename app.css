@@ -6,3 +6,39 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
   *
 */
+
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+body {
+  text-align: center;
+  margin: 1em;
+  font: 1.1em "Press start 2P";
+  font-weight: 200;
+  background: rgb(3,56,136);
+background: linear-gradient(90deg, rgba(3,56,136,1) 0%, rgba(255,255,255,1) 100%);
+}
+* {
+  box-sizing: border-box;
+}
+div {
+  margin: 0 auto;
+  display: inline-block;
+  text-align: center;
+  padding: .4em 1.3em;
+}
+hr {
+  height: 10px;
+  visibility: hidden;
+}
+@mixin step1( $width, $color ) {
+  box-shadow: 
+    $width 0 $color, 
+    -$width 0 $color,
+    0 (-$width) $color, 
+    0 $width $color;
+  margin: $width auto;
+}
+
+.questionForm {
+  border-style: solid;
+}
+

@@ -92,7 +92,7 @@ function startQuizTemplate () {
 
 function questionTemplate () {
   return `<section class="question">
-  <h2> ${STORE.questions[STORE.questionNumber].question}</h2>
+  <h4> ${STORE.questions[STORE.questionNumber].question}</h4>
   <form class="questionForm">
     <fieldset class="radio">
     <input type ="radio" value= "${STORE.questions[STORE.questionNumber].answers[0]}" name="answer" required>
