@@ -79,10 +79,6 @@ const STORE = {
    */
 /** ******** TEMPLATE GENERATION FUNCTIONS **********/
 // These functions return HTML templates
-
-// fuction that choices which template
-// functions that writes the template---startpg, questionpg, resultspg, finalpg
-// function that render the pg
 function startQuizTemplate () {
   return `
   <section class="quiz-explanation">
