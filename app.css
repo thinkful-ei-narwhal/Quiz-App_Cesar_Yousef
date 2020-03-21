@@ -11,11 +11,17 @@
 body {
   text-align: center;
   margin: 1em;
-  font: 1.1em "Press start 2P";
+  font: 0.7em "Press start 2P";
   font-weight: 200;
   background: rgb(3,56,136);
 background: linear-gradient(90deg, rgba(3,56,136,1) 0%, rgba(255,255,255,1) 100%);
 }
+header {
+  margin-bottom: 5em;;
+}
+main {
+}
+
 * {
   box-sizing: border-box;
 }
@@ -38,7 +44,31 @@ hr {
   margin: $width auto;
 }
 
-.questionForm {
+.question {
   border-style: solid;
+  border-radius: 2em;;
+  outline: none;;
+  font-size: ;
 }
 
+form {
+  border-top: solid;
+  border-width: 2px;
+}
+
+.radio {
+  border: none;
+  text-align: left;
+  margin:10px;
+}
+.question-answer {
+  margin: 8px;
+}
+
+#submitQuestion-button {
+  float: right;
+  background-color: rgb(179, 140, 255);
+  padding: 12px;
+  border-radius: 6px;
+  
+}

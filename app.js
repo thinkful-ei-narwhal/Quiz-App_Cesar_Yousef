@@ -95,16 +95,16 @@ function questionTemplate () {
   <h4> ${STORE.questions[STORE.questionNumber].question}</h4>
   <form class="questionForm">
     <fieldset class="radio">
-    <input type ="radio" value= "${STORE.questions[STORE.questionNumber].answers[0]}" name="answer" required>
+    <input type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[0]}" name="answer" required>
     <label for= "question1">${STORE.questions[STORE.questionNumber].answers[0]}</label>
   <br>
-    <input type ="radio" value= "${STORE.questions[STORE.questionNumber].answers[1]}" name="answer" required>
+    <input type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[1]}" name="answer" required>
     <label for= "question1">${STORE.questions[STORE.questionNumber].answers[1]}</label>
   <br>
-    <input type ="radio" value= "${STORE.questions[STORE.questionNumber].answers[2]}" name="answer" required>
+    <input type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[2]}" name="answer" required>
     <label for= "question1">${STORE.questions[STORE.questionNumber].answers[2]}</label>
   <br>
-    <input type ="radio" value= "${STORE.questions[STORE.questionNumber].answers[3]}" name="answer" required>
+    <input type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[3]}" name="answer" required>
     <label for= "question1">${STORE.questions[STORE.questionNumber].answers[3]}</label>
   <br>
     <button type= "submit" id="submitQuestion-button" >Submit</button>
