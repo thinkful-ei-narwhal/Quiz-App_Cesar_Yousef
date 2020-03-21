@@ -6,24 +6,54 @@ const STORE = {
   // 5 or more questions are required
   questions: [
     {
-      question: 'What color is broccoli?',
+      question: 'Who Was The First U.S President?',
       answers: [
-        'red',
-        'orange',
-        'pink',
-        'green'
+        'Abraham Lincoln',
+        'Benjamin Franklin',
+        'Barack Obama',
+        'George Washington'
       ],
-      correctAnswer: 'green'
+      correctAnswer: 'George Washington'
     },
     {
-      question: 'What is the current year?',
+      question: 'What Year Were Women Allowed To Vote?',
       answers: [
-        '1970',
-        '2015',
+        '1920',
+        '1942',
         '2019',
-        '2005'
+        '1970'
       ],
-      correctAnswer: '2019'
+      correctAnswer: '1920'
+    },
+    {
+      question: 'What Amendment Free The Slaves?',
+      answers: [
+        'Amendment IX',
+        'Amendment XIII',
+        'Amendment XIV',
+        'Amendment I'
+      ],
+      correctAnswer: 'Amendment XIII'
+    },
+    {
+      question: 'What Territory Did The US Acquire From Russia In 1867?',
+      answers: [
+        'Australia',
+        'Puerto Rico',
+        'Alaska',
+        'Guam'
+      ],
+      correctAnswer: 'Alaska'
+    },
+    {
+      question: 'Journalists Who Wrote Problems In Society during the Progressive age were called?',
+      answers: [
+        'Scribe',
+        'Stringer',
+        'Acrivener',
+        'Muchrakers'
+      ],
+      correctAnswer: 'Muchrakers'
     }
   ],
   quizStarted: false,
@@ -188,6 +218,7 @@ function handleRestartGame(){
     handleRenderTemplate();
   });
 }
+
 function handleQuizapp () {
   handleRenderTemplate();
   handleStartGame();
