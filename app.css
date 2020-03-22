@@ -21,6 +21,11 @@ html {
 header {
   margin-bottom: 5em;
   margin: 30px;
+  color: rgb(240, 248, 255);
+}
+
+.white{
+  color: rgb(240, 248, 255);
 }
 
 h2{
@@ -46,7 +51,7 @@ body {
   font: 0.7em "Press start 2P";
   font-weight: 200;
   line-height: 1.6;
-  background: linear-gradient(90deg, rgba(3,56,136,1) 0%, rgba(255,255,255,1) 100%);
+  background: #033888;
 }
 
 main {
@@ -55,7 +60,7 @@ main {
   justify-content:space-around;
   border-style: solid;
   border-radius: 2em;
-  border-width: 2px;
+  border-width: 3px;
   height: 50%;
   outline: none;
   width: 90%;
@@ -76,7 +81,7 @@ main {
 
 form {
   border-top: solid;
-  border-width: 2px;
+  border-width: 3px;
 }
 
 .radio {
@@ -95,7 +100,7 @@ form {
 }
 
 .purple-button {
-  background-color: rgb(179, 140, 255);
+  background-color: #B38CFF;
   padding: 0.8em;
   border-radius: 6px;
 }

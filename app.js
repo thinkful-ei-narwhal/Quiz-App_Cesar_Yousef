@@ -82,8 +82,8 @@ const STORE = {
 function startQuizTemplate () {
   return `
   <section class="quiz-explanation">
-    <h2>WANT TO PLAY?</h2>
-    <p class="quiz-description">Test Your knowledge 
+    <h2 class="white">WANT TO PLAY?</h2>
+    <p class="quiz-description white">Test Your knowledge 
     <br>In U.S History
     <br>See How Much You Really Know
     <br>Prove Yourself
@@ -98,9 +98,9 @@ function startQuizTemplate () {
 
 function questionTemplate () {
   return `<section class="question">
-  <h2> ${STORE.questions[STORE.questionNumber].question}</h2>
+  <h2 class="white"> ${STORE.questions[STORE.questionNumber].question}</h2>
   <form class="questionForm">
-    <fieldset class="radio">
+    <fieldset class="radio white">
     <input type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[0]}" name="answer" required>
     <label for= "question1" >${STORE.questions[STORE.questionNumber].answers[0]}</label>
   <br>
@@ -121,7 +121,7 @@ function questionTemplate () {
 
 function correctResultsTemplate () {
   return `
-  <section class="quiz-results">
+  <section class="quiz-results white">
     <h2 class="result">Your anwser is ${(STORE.lastAnswear)?'Correct':'Wrong'}</h2>
   <section>
   <section class="result-details">
@@ -137,7 +137,7 @@ function correctResultsTemplate () {
 }
 
 function endQuizTemplate () {
-  return ` <section class="quiz-results">
+  return ` <section class="quiz-results white">
   <h2> You got a ${(STORE.score/STORE.questions.length)*100}%</h2>
   <section>
   <section class="result-details">
