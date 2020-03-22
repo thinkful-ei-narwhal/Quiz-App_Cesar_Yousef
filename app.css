@@ -8,15 +8,27 @@
 */
 
 @import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
   text-align: center;
-  margin: 1em;
+  height: 100%;
   font: 0.7em "Press start 2P";
   font-weight: 200;
-  background: rgb(3,56,136);
-background: linear-gradient(90deg, rgba(3,56,136,1) 0%, rgba(255,255,255,1) 100%);
-
+  background: linear-gradient(90deg, rgba(3,56,136,1) 0%, rgba(255,255,255,1) 100%);
 }
+
 header {
   margin-bottom: 5em;
   margin: 30px;
@@ -47,13 +59,26 @@ hr {
 }
 
 main {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-around;
   border-style: solid;
   border-radius: 2em;
+  height: 50%;
   outline: none;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 90%;
   padding:10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.quiz-explanation{
+  display: flex;
+  flex-direction: column;
+  justify-content:space-around;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 form {
