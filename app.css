@@ -25,7 +25,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  
+
   text-align: center;
   height: 100%;
   font: 0.7em "Press start 2P";
@@ -55,6 +55,7 @@ main {
   justify-content:space-around;
   border-style: solid;
   border-radius: 2em;
+  border-width: 2px;
   height: 50%;
   outline: none;
   width: 90%;
