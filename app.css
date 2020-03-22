@@ -8,6 +8,10 @@
 */
 
 @import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+* {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
   margin: 0;
@@ -21,11 +25,12 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-
+  
   text-align: center;
   height: 100%;
   font: 0.7em "Press start 2P";
   font-weight: 200;
+  line-height: 1.6;
   background: linear-gradient(90deg, rgba(3,56,136,1) 0%, rgba(255,255,255,1) 100%);
 }
 
@@ -41,21 +46,7 @@ h1{
   font-size: 20px;
 }
 p{
-  font-size: 10px;
-}
-
-* {
-  box-sizing: border-box;
-}
-div {
-  margin: 0 auto;
-  display: inline-block;
-  text-align: center;
-  padding: .4em 1.3em;
-}
-hr {
-  height: 10px;
-  visibility: hidden;
+  font-size: 11px;
 }
 
 main {

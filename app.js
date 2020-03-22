@@ -86,6 +86,8 @@ function startQuizTemplate () {
     <p class="quiz-description">Test Your knowledge 
     <br>In U.S History
     <br>See How Much You Really Know
+    <br>Prove Yourself
+    <br> Take This Test
     </p>
   <section>
   <section class="button-section">
