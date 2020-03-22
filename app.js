@@ -100,6 +100,7 @@ function questionTemplate () {
   return `<section class="question">
   <h2 class="white"> ${STORE.questions[STORE.questionNumber].question}</h2>
   <form class="questionForm">
+    <p>${STORE.questionNumber + 1} of ${STORE.questions.length}</p>
     <fieldset class="radio white">
     <input type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[0]}" name="answer" required>
     <label for= "question1" >${STORE.questions[STORE.questionNumber].answers[0]}</label>

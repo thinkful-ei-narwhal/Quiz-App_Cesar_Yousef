@@ -83,6 +83,11 @@ form {
   border-top: solid;
   border-width: 3px;
 }
+form p{
+  position: relative;
+  text-align: right;
+  right: 10px;
+}
 
 .radio {
   border: none;
@@ -95,6 +100,7 @@ form {
 
 #submitQuestion-button {
   position: absolute;
+  text-align: right;
   right: 20px;
   bottom: 20px;
 }
