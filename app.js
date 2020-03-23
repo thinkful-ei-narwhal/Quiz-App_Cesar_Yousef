@@ -121,7 +121,7 @@ function questionTemplate () {
       <section class="submit-button">
         <button type= "submit" class="purple-button" >Submit</button>
       </section>
-    </fieldset>g
+    </fieldset>
   </form>
     `;
 }
