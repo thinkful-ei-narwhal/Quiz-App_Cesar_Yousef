@@ -21,11 +21,6 @@ html {
 h1 {
   margin-bottom: 5em;
   margin: 30px;
-  color: rgb(240, 248, 255);
-}
-
-.white{
-  color: rgb(240, 248, 255);
 }
 
 h2{
@@ -37,6 +32,13 @@ h1{
 p{
   font-size: 11px;
 }
+
+
+
+header, p, .radio{
+  color: rgb(240, 248, 255);
+}
+
 
 body {
   display: flex;

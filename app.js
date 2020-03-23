@@ -82,30 +82,30 @@ const STORE = {
 function startQuizTemplate () {
   return `
   <header>
-    <h2 class="white">WANT TO PLAY?</h2>
+    <h2>WANT TO PLAY?</h2>
   </header>
   <section> 
-    <p class="quiz-description white">Test Your knowledge 
+    <p>Test Your knowledge 
     <br>In U.S History
     <br>See How Much You Really Know
     <br>Prove Yourself
     <br> Take This Test
     </p>
   </section>
-  <section class="button-section">
+  <section>
     <button class="start-button purple-button" >
-    <span class="button-label" >START</span>
+    <span>START</span>
   </section>`;
 }
 
 function questionTemplate () {
   return `
   <header>
-  <h2 class="white"> ${STORE.questions[STORE.questionNumber].question}</h2>
+  <h2> ${STORE.questions[STORE.questionNumber].question}</h2>
   </header>
-  <form class="questionForm">
-    <p class="white">Q:${STORE.questionNumber + 1} of ${STORE.questions.length}</p>
-    <fieldset class="radio white">
+  <form>
+    <p>Q:${STORE.questionNumber + 1} of ${STORE.questions.length}</p>
+    <fieldset class="radio">
     <input id="question1" type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[0]}" name="question" required>
     <label for= "question1" >${STORE.questions[STORE.questionNumber].answers[0]}</label>
   <br>
@@ -125,34 +125,34 @@ function questionTemplate () {
 
 function correctResultsTemplate () {
   return `
-  <header class="white">
-    <h2 class="result">Your anwser is ${(STORE.lastAnswear)?'Correct':'Wrong'}</h2>
+  <header>
+    <h2>Your anwser is ${(STORE.lastAnswear)?'Correct':'Wrong'}</h2>
   </header>
-  <section class="result-details white">
+  <section>
   <p>Answer: ${STORE.questions[STORE.questionNumber].correctAnswer}<p>
   <p>Score: ${STORE.score} out ${STORE.questions.length}</p>
   <p>Correct: ${STORE.score}</p>
   <p>Incorrect: ${STORE.wrong}</p>
   </section>
-  <section class="result-button">
+  <section>
     <button class="next-button purple-button">
-    <span class="button-label">Next</span>
+    <span>Next</span>
   </section>`;
 }
 
 function endQuizTemplate () {
   return `
-  <header class="white">
+  <header>
   <h2> You got a ${(STORE.score/STORE.questions.length)*100}%</h2>
   </header>
-  <section class="result-details white">
+  <section>
   <p>Score: ${STORE.score} out ${STORE.questions.length}</p>
   <p>Correct: ${STORE.score}</p>
   <p>Incorrect: ${STORE.wrong}</p>
   </section>
-  <section class="result-button">
+  <section>
     <button class="restart-button purple-button">
-    <span class="button-label">Try Again</span>
+    <span>Try Again</span>
   </section>`;
 }
 
