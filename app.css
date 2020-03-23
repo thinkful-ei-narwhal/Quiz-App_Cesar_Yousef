@@ -80,7 +80,7 @@ form {
 form p{
   position: relative;
   text-align: right;
-  right: 10;
+  right: 10px;
 }
 
 .radio {
@@ -93,11 +93,10 @@ form p{
   margin: 8px;
 }
 
-#submitQuestion-button {
-  position: absolute;
-  text-align: right;
-  right: 20px;
-  bottom: 20px;
+
+.submit-button{
+  display:flex;
+  justify-content: flex-end;
 }
 
 .purple-button {

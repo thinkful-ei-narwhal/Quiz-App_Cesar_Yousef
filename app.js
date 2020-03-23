@@ -101,26 +101,29 @@ function startQuizTemplate () {
 function questionTemplate () {
   return `
   <header>
-  <h2> ${STORE.questions[STORE.questionNumber].question}</h2>
+    <h2> ${STORE.questions[STORE.questionNumber].question}</h2>
   </header>
   <form>
     <p>Q:${STORE.questionNumber + 1} of ${STORE.questions.length}</p>
     <fieldset class="radio">
-    <input id="question1" type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[0]}" name="question" required>
-    <label for= "question1" >${STORE.questions[STORE.questionNumber].answers[0]}</label>
-  <br>
-    <input id="question2" type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[1]}" name="question" required>
-    <label for= "question2">${STORE.questions[STORE.questionNumber].answers[1]}</label>
-  <br>
-    <input id="question3" type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[2]}" name="question" required>
-    <label for= "question3">${STORE.questions[STORE.questionNumber].answers[2]}</label>
-  <br>
-    <input id="question4" type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[3]}" name="question" required>
-    <label for= "question4">${STORE.questions[STORE.questionNumber].answers[3]}</label>
-  <br>
-    <button type= "submit" id="submitQuestion-button" class="purple-button" >Submit</button>
+      <input id="question1" type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[0]}" name="question" required>
+      <label for= "question1" >${STORE.questions[STORE.questionNumber].answers[0]}</label>
+      <br>
+      <input id="question2" type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[1]}" name="question" required>
+      <label for= "question2">${STORE.questions[STORE.questionNumber].answers[1]}</label>
+      <br>
+      <input id="question3" type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[2]}" name="question" required>
+      <label for= "question3">${STORE.questions[STORE.questionNumber].answers[2]}</label>
+      <br>
+      <input id="question4" type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[3]}" name="question" required>
+      <label for= "question4">${STORE.questions[STORE.questionNumber].answers[3]}</label>
+      <br>
+    </section>
+    <section class="submit-button">
+      <button type= "submit" class="purple-button" >Submit</button>
+    </section>
   </form>
-  `;
+    `;
 }
 
 function correctResultsTemplate () {
@@ -129,10 +132,10 @@ function correctResultsTemplate () {
     <h2>Your anwser is ${(STORE.lastAnswear)?'Correct':'Wrong'}</h2>
   </header>
   <section>
-  <p>Answer: ${STORE.questions[STORE.questionNumber].correctAnswer}<p>
-  <p>Score: ${STORE.score} out ${STORE.questions.length}</p>
-  <p>Correct: ${STORE.score}</p>
-  <p>Incorrect: ${STORE.wrong}</p>
+    <p>Answer: ${STORE.questions[STORE.questionNumber].correctAnswer}
+    <br>Score: ${STORE.score} out ${STORE.questions.length}
+    <br>Correct: ${STORE.score}
+    <br>Incorrect: ${STORE.wrong}</p>
   </section>
   <section>
     <button class="next-button purple-button">
@@ -143,12 +146,12 @@ function correctResultsTemplate () {
 function endQuizTemplate () {
   return `
   <header>
-  <h2> You got a ${(STORE.score/STORE.questions.length)*100}%</h2>
+    <h2> You got a ${(STORE.score/STORE.questions.length)*100}%</h2>
   </header>
   <section>
-  <p>Score: ${STORE.score} out ${STORE.questions.length}</p>
-  <p>Correct: ${STORE.score}</p>
-  <p>Incorrect: ${STORE.wrong}</p>
+    <p>Score: ${STORE.score} out ${STORE.questions.length}
+    <br>Correct: ${STORE.score}
+    <br>Incorrect: ${STORE.wrong}</p>
   </section>
   <section>
     <button class="restart-button purple-button">
