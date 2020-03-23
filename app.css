@@ -18,7 +18,7 @@ html {
   padding: 0;
 }
 
-header {
+h1 {
   margin-bottom: 5em;
   margin: 30px;
   color: rgb(240, 248, 255);
@@ -70,23 +70,15 @@ main {
   position: relative;
 }
 
-.quiz-explanation{
-  display: flex;
-  flex-direction: column;
-  justify-content:space-around;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 form {
   border-top: solid;
   border-width: 3px;
 }
+
 form p{
   position: relative;
   text-align: right;
-  right: 10px;
+  right: 10;
 }
 
 .radio {
@@ -94,6 +86,7 @@ form p{
   text-align: left;
   font-size: 11px;
 }
+
 .question-answer {
   margin: 8px;
 }

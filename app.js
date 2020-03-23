@@ -81,51 +81,54 @@ const STORE = {
 // These functions return HTML templates
 function startQuizTemplate () {
   return `
-  <section class="quiz-explanation">
+  <header>
     <h2 class="white">WANT TO PLAY?</h2>
+  </header>
+  <section> 
     <p class="quiz-description white">Test Your knowledge 
     <br>In U.S History
     <br>See How Much You Really Know
     <br>Prove Yourself
     <br> Take This Test
     </p>
-  <section>
+  </section>
   <section class="button-section">
     <button class="start-button purple-button" >
-    <span class="button-label">START</span>
-    </section>`;
+    <span class="button-label" >START</span>
+  </section>`;
 }
 
 function questionTemplate () {
-  return `<section class="question">
+  return `
+  <header>
   <h2 class="white"> ${STORE.questions[STORE.questionNumber].question}</h2>
+  </header>
   <form class="questionForm">
-    <p class="white">${STORE.questionNumber + 1} of ${STORE.questions.length}</p>
+    <p class="white">Q:${STORE.questionNumber + 1} of ${STORE.questions.length}</p>
     <fieldset class="radio white">
-    <input type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[0]}" name="answer" required>
+    <input id="question1" type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[0]}" name="question" required>
     <label for= "question1" >${STORE.questions[STORE.questionNumber].answers[0]}</label>
   <br>
-    <input type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[1]}" name="answer" required>
-    <label for= "question1">${STORE.questions[STORE.questionNumber].answers[1]}</label>
+    <input id="question2" type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[1]}" name="question" required>
+    <label for= "question2">${STORE.questions[STORE.questionNumber].answers[1]}</label>
   <br>
-    <input type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[2]}" name="answer" required>
-    <label for= "question1">${STORE.questions[STORE.questionNumber].answers[2]}</label>
+    <input id="question3" type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[2]}" name="question" required>
+    <label for= "question3">${STORE.questions[STORE.questionNumber].answers[2]}</label>
   <br>
-    <input type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[3]}" name="answer" required>
-    <label for= "question1">${STORE.questions[STORE.questionNumber].answers[3]}</label>
+    <input id="question4" type ="radio" class="question-answer" value= "${STORE.questions[STORE.questionNumber].answers[3]}" name="question" required>
+    <label for= "question4">${STORE.questions[STORE.questionNumber].answers[3]}</label>
   <br>
     <button type= "submit" id="submitQuestion-button" class="purple-button" >Submit</button>
   </form>
-  </section>
   `;
 }
 
 function correctResultsTemplate () {
   return `
-  <section class="quiz-results white">
+  <header class="white">
     <h2 class="result">Your anwser is ${(STORE.lastAnswear)?'Correct':'Wrong'}</h2>
-  <section>
-  <section class="result-details">
+  </header>
+  <section class="result-details white">
   <p>Answer: ${STORE.questions[STORE.questionNumber].correctAnswer}<p>
   <p>Score: ${STORE.score} out ${STORE.questions.length}</p>
   <p>Correct: ${STORE.score}</p>
@@ -138,10 +141,11 @@ function correctResultsTemplate () {
 }
 
 function endQuizTemplate () {
-  return ` <section class="quiz-results white">
+  return `
+  <header class="white">
   <h2> You got a ${(STORE.score/STORE.questions.length)*100}%</h2>
-  <section>
-  <section class="result-details">
+  </header>
+  <section class="result-details white">
   <p>Score: ${STORE.score} out ${STORE.questions.length}</p>
   <p>Correct: ${STORE.score}</p>
   <p>Incorrect: ${STORE.wrong}</p>
